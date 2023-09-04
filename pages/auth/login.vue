@@ -1,16 +1,28 @@
+<script setup>
+import InputText from "~/components/Form/inputText.vue";
+
+const form = reactive({
+  email: null,
+  password: null
+})
+
+const handleSubmit = () => {
+  console.log(form)
+}
+</script>
 <template>
   <div class="min-h-screen flex items-center">
     <div class="w-full">
         <div class="card bg-white p-8 rounded-lg shadow-xl md:w-3/4 mx-auto lg:w-1/3">
           <h3 class="text-center text-2xl font-semibold">User login</h3>
-            <form>
+            <form @submit.prevent="handleSubmit">
               <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required>
+                <FormLabel for="email">Your Email</FormLabel>
+                <FormInputText id="email" placeholder="Email address" v-model="form.email" type="email"/>
               </div>
               <div class="mb-6">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <FormLabel for="password">Your Password</FormLabel>
+                <FormInputText id="password" placeholder="Enter password" v-model="form.password" type="password"/>
               </div>
               <div class="flex items-start mb-6">
                 <div class="flex items-center h-5">
